@@ -3,7 +3,7 @@
 	Crack open a Milwaukee's Beast, grab some 
 	college rule from your peechee, and jot down
 	some song titles for the album of 26 songs that 
-	you will spend the thirteen hours recording.
+	you will spend the next thirteen hours recording.
 
 	Examples:
 		Adoptee Yengee Permixture Threadlet
