@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 """
     Crack open a Milwaukee's Beast, grab some
     college rule from your peechee, and jot down
@@ -14,26 +14,31 @@
 """
 
 from random import choice, randint
+import sys
 
 
-def get_songtitle(wordcount, words):
-    """Generates a string of given length (wordcount), using Title Case."""
-    songtitle = []
+def get_words(wordcount, words):
+    """Generates a list of words"""
+    wordlist = []
     for i in range(1, wordcount):
-        songtitle.append(choice(words).title().strip())
+        wordlist.append(choice(words).lower().strip())
     while True:
-        char_count = len(" ".join(songtitle))
+        char_count = len(" ".join(wordlist))
         if char_count <= 114:
             break
-        songtitle.pop()
-    return " ".join(songtitle)
+        wordlist.pop()
+    return wordlist
 
 
 def main():
     with open("/usr/share/dict/words", "r") as f:
         words = f.readlines()
-    bob_sez = "My favorite GBV song is %s!" % get_songtitle(randint(4, 17), words)
-    print(bob_sez)
+    if len(sys.argv) == 2 and sys.argv[1] == "--password":
+        print('_'.join(get_words(4, words)))
+    else:
+        song_title = ' '.join(get_words(randint(4, 17), words)).title()
+        bob_sez = "My favorite GBV song is %s!" % (song_title)
+        print(bob_sez)
 
 
 if __name__ == "__main__":
